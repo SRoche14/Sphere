@@ -40,7 +40,7 @@ class Points(nn.Module):
 def optimize(N, D):
     points = Points(N, D).to(device)
 
-    optim = torch.optim.Adam(points.parameters(), lr=1e-1) # changed Adam to SGD
+    optim = torch.optim.RAdam(points.parameters(), lr=1e-1) # changed Adam to SGD
 
     while True:
         optim.zero_grad()
