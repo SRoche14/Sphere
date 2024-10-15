@@ -40,7 +40,7 @@ class Points(nn.Module):
 def optimize(N, D):
     points = Points(N, D).to(device)
 
-    optim = torch.optim.RAdam(points.parameters(), lr=1e-1) # changed Adam to SGD
+    optim = torch.optim.Adam(points.parameters(), lr=1e-1) # changed Adam to SGD
 
     while True:
         optim.zero_grad()
@@ -100,4 +100,4 @@ def animate(num_iters, N, D):
     ax.set_zlabel("Z")
     plt.show()
 
-animate(1000, 7, 3)
+animate(1000, 40, 3)
