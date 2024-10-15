@@ -16,7 +16,7 @@ class Points(nn.Module):
         self.points = nn.Parameter(torch.randn(N, D, device=device))
 
     def normalize_points(self):
-       # return self.points / self.points.norm(dim=-1, p=2, keepdim=True)
+       return self.points / self.points.norm(dim=-1, p=2, keepdim=True)
        return self.points
 
     def loss(self):
@@ -33,7 +33,7 @@ class Points(nn.Module):
             torch.ones(self.N, self.N, dtype=bool, device=device), diagonal=1
         )
         #
-        loss = torch.median(1 / (distance[mask] ** 2 + 1e-6)) # changed torch.mean to torch.median
+        loss = torch.mean(1 / (distance[mask] ** 2 + 1e-6))
         return loss
 
 
